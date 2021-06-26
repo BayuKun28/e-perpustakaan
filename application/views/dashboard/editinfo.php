@@ -6,13 +6,11 @@
             <div class="card">
                 <div class="card-body ">
                     <?= $this->session->flashdata('message'); ?>
-                    <form method="post" action="<?= base_url('dashboard/editinfo') ?>">
+                    <form method="post" action="<?= base_url('dashboard/editinfo/') . $detail['id']; ?>">
                         <div class="form-row">
                             <div class="form-group col">
                                 <label for="catatan">Catatan</label>
-                                <?php foreach ($mading as $m) : ?>
-                                <textarea class="form-control" id="isian" name="isian" rows="3" required="true"><?= $m['isi']; ?></textarea>
-                                <?php endforeach; ?>
+                                <textarea class="form-control" id="isian" name="isian" rows="3" required="true"><?= $detail['isi']; ?></textarea>
                             </div>
                         </div>
 

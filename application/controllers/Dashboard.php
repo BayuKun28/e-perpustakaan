@@ -43,7 +43,11 @@ class Dashboard extends CI_Controller
         $data['menu'] = $this->db->get('user_menu')->result_array();
         $this->load->model('Dashboard_model', 'das');
         $data['mading'] = $this->das->info();
+        $data['detail'] = $this->das->getdetail(
+            $this->uri->segment(3)
+        );
         $this->form_validation->set_rules('isian', 'Isiann', 'trim|required');
+        $id = $this->uri->segment(3);
          if ($this->form_validation->run() == false) {
          $this->load->view('templates/header', $data);
          $this->load->view('templates/sidebar', $data);
@@ -54,7 +58,7 @@ class Dashboard extends CI_Controller
              $isi =[
               'isi' => $this->input->post('isian')
                  ];
-            $this->db->where('keterangan','mading');
+            $this->db->where('id', $id);
             $this->db->update('tb_dashboard', $isi);
             // die($isi);
             $this->session->set_flashdata('message', 'Berhasil Di Update');

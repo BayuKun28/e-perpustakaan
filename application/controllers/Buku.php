@@ -127,22 +127,21 @@ class Buku extends CI_Controller
         }
     }
     public function export(){
+        
+        $this->load->model('Buku_model', 'buku');
+        $data['title'] = 'Laporan Daftar Buku';
+        $data['buku'] = $this->buku->getBuku();
+        $dompdf = new Dompdf();
+        // $this->data['perusahaan'] = $this->m_usaha->lihat()
+        $this->data['title'] = 'Laporan Data Buku';
+        $this->data['no'] = 1;
 
-        $this->load->view('buku/report');  
-        // $this->load->model('Buku_model', 'buku');
-        // $data['title'] = 'Laporan Daftar Buku';
-        // $data['buku'] = $this->buku->getBuku();
-        // $dompdf = new Dompdf();
-        // // $this->data['perusahaan'] = $this->m_usaha->lihat()
-        // $this->data['title'] = 'Laporan Data Buku';
-        // $this->data['no'] = 1;
-
-        // $dompdf->setPaper('A4', 'Portrait');
-        // // $this->load->view('buku/detail', $data);
-        // $html = $this->load->view('buku/report', $data, true);
-        // $dompdf->load_html($html);
-        // $dompdf->render();
-        // $dompdf->stream('Laporan Data Penjualan Tanggal ' . date('d F Y'), array("Attachment" => false));
+        $dompdf->setPaper('A4', 'Portrait');
+        // $this->load->view('buku/detail', $data);
+        $html = $this->load->view('buku/report', $data, true);
+        $dompdf->load_html($html);
+        $dompdf->render();
+        $dompdf->stream('Laporan Data Penjualan Tanggal ' . date('d F Y'), array("Attachment" => false));
     }
 
     // public function export(){

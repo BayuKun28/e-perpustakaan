@@ -8,7 +8,7 @@
               <div class="row">
                 <h6 class="m-0 font-weight-bold text-primary col-sm-12 col-md-8 ">Daftar Buku Di Perpustakaan</h6>
                 <div class=" col-sm-12 col-md-4 text-right">
-                  <a href="<?= base_url('buku/export'); ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
+                  <a href="<?= base_url('buku/export'); ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" target="blamk" data-original-title="Tambah Data">
                     <span class="btn-inner--icon"><i class="fas fa-file-pdf"></i></span>
                     <span class="btn-inner--text">Cetak</span>
                   </a>

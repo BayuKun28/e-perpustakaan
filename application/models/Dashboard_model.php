@@ -5,13 +5,13 @@ class Dashboard_model extends CI_Model
 {
     public function info()
     {
-        $query = " SELECT isi FROM tb_dashboard where keterangan = 'mading' limit 1";
+        $query = " SELECT * FROM tb_dashboard ORDER BY id ASC limit 2 ";
         return $this->db->query($query)->result_array();
     }
 
-    public function getdetail()
+    public function getdetail($id)
     {
-        $detail = " SELECT * from tb_dashboard where id = 1 ";
+        $detail = " SELECT * from tb_dashboard where id = $id ";
         return $this->db->query($detail)->row_array();
     }
 }

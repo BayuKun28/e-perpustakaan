@@ -92,7 +92,7 @@
 
             <!-- Content Row -->
 
-            <div class="row">
+            <div class="col-lg-12 col-xl-12">
 
 
 
@@ -100,7 +100,7 @@
                 <div class="row">
 
                     <!-- Content Column -->
-                    <div class="col-lg-6 mb-4">
+                    <div class="col-lg-6 col-md-6 mb-4">
 
                         <!-- Project Card Example -->
                         <div class="card shadow mb-4">
@@ -131,31 +131,19 @@
 
                     </div>
 
-                    <div class="col-lg-6 mb-4">
-
-                        <!-- Illustrations -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Pengumuman</h6>
-                            </div>
-                            <div class="card-body">
-                                <p>Perpustakaan Buka Pada Hari Senin - Sabtu Dan untuk Tanggal Merah Dan Minggu Libur.!</p>
-                                <a target="_blank" rel="nofollow" href="https://bayukun.my.id/">Develop &rarr;</a>
-                            </div>
-                        </div>
-
+                    <div class="col-lg-6 mb-6">
+                        <?php foreach ($mading as $m) : ?>
                         <!-- Approach -->
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-3">
-                                <h6 class="m-0 font-weight-bold text-primary">Papan Informasi</h6>
+                        <div class="card shadow mb-6">
+                            <div class="card-header py-6">
+                                <h6 class="m-0 font-weight-bold text-primary"><?= $m['keterangan'];?></h6>
                             </div>
-                            <?php foreach ($mading as $m) : ?>
                             <div class="card-body">
                                 <p><?= $m['isi'];?></p>
-                                <p><a href="<?= base_url('Dashboard/editinfo'); ?>" class="btn btn-primary">Edit</a></p>
+                                <p><a href="<?= base_url('Dashboard/editinfo/') . $m['id']; ?>" class="btn btn-primary">Edit</a></p>
                             </div>
-                        <?php endforeach; ?>
                         </div>
+                        <?php endforeach; ?>
 
                     </div>
                 </div>
