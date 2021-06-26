@@ -20,11 +20,11 @@
     <link href="<?= base_url('assets/') ?>js/sweetalert/dist/sweetalert2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= base_url('assets/'); ?>css/bootstrap-datepicker3.css" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
-    <script src=”<?= base_url('assets/') ?>tinymce/js/tinymce/tinymce.dev.js”></script>
-    <script src=”<?= base_url('assets/') ?>tinymce/js/tinymce/plugins/table/plugin.dev.js”></script>
-    <script src=”<?= base_url('assets/') ?>tinymce/js/tinymce/plugins/paste/plugin.dev.js”></script>
-    <script src=”<?= base_url('assets/') ?>tinymce/js/tinymce/plugins/spellchecker/plugin.dev.js”></script>
-
+    
+    <script src="<?= base_url('assets/'); ?>tinymce/js/tinymce/tinymce.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>tinymce/js/tinymce/plugins/table/plugin.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>tinymce/js/tinymce/plugins/paste/plugin.min.js"></script>
+    <script src="<?= base_url('assets/'); ?>tinymce/js/tinymce/plugins/spellchecker/plugin.min.js"></script>
 
   
 </head>
