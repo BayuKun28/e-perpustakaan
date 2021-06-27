@@ -94,4 +94,19 @@ class User extends CI_Controller
             redirect('dashboard');
         }
     }
+
+    public function list()
+    {
+        $data['title'] = 'Daftar Member';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['role'] = $this->db->get('user_role')->result_array();
+        $this->load->model('User_model', 'user');
+        $data['daftarmember'] = $this->user->getlistuser();
+        $id = $this->session->userdata('id');
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('user/list', $data);
+        $this->load->view('templates/footer');
+    }
 }
