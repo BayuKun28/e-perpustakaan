@@ -42,8 +42,9 @@ class Transaksi extends CI_Controller
                 'catatan' => $this->input->post('catatan'),
                 'status' => 'Pinjam'
             ];
+            die($ins);
             $this->db->insert('tb_peminjaman', $ins);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Di Tambah</div>');
+            $this->session->set_flashdata('message', 'Berhasil Pinjam');
             redirect('transaksi/peminjaman');
         }
     }

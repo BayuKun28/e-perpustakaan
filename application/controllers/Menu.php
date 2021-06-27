@@ -24,7 +24,7 @@ class Menu extends CI_Controller
             $this->load->view('templates/footer', $data);
         } else {
             $this->db->insert('user_menu', ['menu' =>    $this->input->post('menu')]);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New Menu Added.!</div>');
+            $this->session->set_flashdata('message', 'Berhasil');
             redirect('menu');
         }
     }
@@ -54,7 +54,7 @@ class Menu extends CI_Controller
                 'is_active' => $this->input->post('is_active')
             ];
             $this->db->insert('user_sub_menu', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">New SubMenu Added.!</div>');
+            $this->session->set_flashdata('message', 'Berhasil');
             redirect('menu/submenu');
         }
     }
@@ -97,7 +97,7 @@ class Menu extends CI_Controller
             ];
             $this->db->where('id', $id);
             $this->db->update('user_sub_menu', $up);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Diperbarui.!</div>');
+            $this->session->set_flashdata('message', 'Berhasil Di Update');
             redirect('menu/submenu');
         }
     }
@@ -128,7 +128,7 @@ class Menu extends CI_Controller
             ];
             $this->db->where('id', $id);
             $this->db->update('user_menu', $up);
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Berhasil Diperbarui.!</div>');
+            $this->session->set_flashdata('message', 'Berhasil Di Update');
             redirect('menu');
         }
     }

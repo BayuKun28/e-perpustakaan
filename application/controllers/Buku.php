@@ -56,7 +56,7 @@ class Buku extends CI_Controller
                 'ket' => $this->input->post('ket', true)
             ];
             $this->db->insert('tb_buku', $bk);
-            $this->session->set_flashdata('message', 'Berhasil Ditambah');
+            $this->session->set_flashdata('message', 'Berhasil');
             redirect('buku');
         }
     }
@@ -80,7 +80,7 @@ class Buku extends CI_Controller
     {
         $this->db->where('id', $id);
         $this->db->delete('tb_buku');
-//        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Buku Berhasil Di Hapus..!</div>');
+        //        $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Buku Berhasil Di Hapus..!</div>');
         $this->session->set_flashdata('message', 'Berhasil Dihapus');
         redirect('buku');
     }
@@ -126,8 +126,9 @@ class Buku extends CI_Controller
             redirect('buku');
         }
     }
-    public function export(){
-        
+    public function export()
+    {
+
         $this->load->model('Buku_model', 'buku');
         $data['title'] = 'Laporan Daftar Buku';
         $data['buku'] = $this->buku->getBuku();

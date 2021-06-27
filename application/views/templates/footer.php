@@ -41,7 +41,8 @@
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.min.js"></script>
 <!-- <script src="htpps://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
- --><script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+ -->
+<script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 <!-- Core plugin JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery-easing/jquery.easing.min.js"></script>
@@ -58,8 +59,12 @@
 <script src="<?= base_url('assets/'); ?>js/bootstrap-datepicker.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
 
-<script type='text/javascript'> 
-tinymce.init({ selector:'textarea', menubar:'', theme: 'silver'});
+<script type='text/javascript'>
+    tinymce.init({
+        selector: 'textarea',
+        menubar: '',
+        theme: 'silver'
+    });
 </script>
 
 
@@ -124,65 +129,61 @@ tinymce.init({ selector:'textarea', menubar:'', theme: 'silver'});
 
 
 <script type="text/javascript">
-    
-
-$(document).on('click', '.del_buku', function(event) {
-          event.preventDefault();
-          let kode = $(this).attr('data-kode');
-          let delete_url = "<?= base_url(); ?>/buku/delete/" + kode;
+    $(document).on('click', '.del_buku', function(event) {
+        event.preventDefault();
+        let kode = $(this).attr('data-kode');
+        let delete_url = "<?= base_url(); ?>/buku/delete/" + kode;
 
 
-            Swal.fire({
-                title: 'Hapus Buku',
-                text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus',
-                cancelButtonText: 'Batal'
-            }).then(async (result) => {
-                if(result.value) {
-                  window.location.href = delete_url;
-                }
-            });
+        Swal.fire({
+            title: 'Hapus Buku',
+            text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then(async (result) => {
+            if (result.value) {
+                window.location.href = delete_url;
+            }
         });
-
+    });
 </script>
 
 
 <script type="text/javascript">
-$(document).on('click', '.del_sup', function(event) {
-          event.preventDefault();
-          let kode = $(this).attr('data-kode');
-          let delete_url = "<?= base_url(); ?>/supplier/delete/" + kode;
+    $(document).on('click', '.del_sup', function(event) {
+        event.preventDefault();
+        let kode = $(this).attr('data-kode');
+        let delete_url = "<?= base_url(); ?>/supplier/delete/" + kode;
 
 
-            Swal.fire({
-                title: 'Hapus Supplier',
-                text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus',
-                cancelButtonText: 'Batal'
-            }).then(async (result) => {
-                if(result.value) {
-                  window.location.href = delete_url;
-                }
-            });
+        Swal.fire({
+            title: 'Hapus Supplier',
+            text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then(async (result) => {
+            if (result.value) {
+                window.location.href = delete_url;
+            }
         });
-
+    });
 </script>
 
 
-  <?php 
-       if (!empty($this->session->flashdata('message'))){
-           $pesan = $this->session->flashdata('message');
-                if($pesan == "Berhasil"){
-                    // die($pesan);
-                $script = "
+<?php
+if (!empty($this->session->flashdata('message'))) {
+    $pesan = $this->session->flashdata('message');
+    if ($pesan == "Berhasil") {
+        // die($pesan);
+        $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -190,10 +191,10 @@ $(document).on('click', '.del_sup', function(event) {
                               text: 'Data Berhasil Ditambah'
                             }) 
                     </script>
-                ";             
-            }elseif($pesan == "Berhasil Dihapus"){
-                    // die($pesan);
-                $script = "
+                ";
+    } elseif ($pesan == "Berhasil Dihapus") {
+        // die($pesan);
+        $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -202,11 +203,9 @@ $(document).on('click', '.del_sup', function(event) {
                             }) 
                     </script>
                 ";
-                } 
-
-            elseif($pesan == "Berhasil Di Update"){
-                    // die($pesan);
-                $script = "
+    } elseif ($pesan == "Berhasil Di Update") {
+        // die($pesan);
+        $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -215,12 +214,20 @@ $(document).on('click', '.del_sup', function(event) {
                             }) 
                     </script>
                 ";
-                }    
-
-            else
-            {
-                $script = 
-                    "
+    } elseif ($pesan == "Berhasil Pinjam") {
+        // die($pesan);
+        $script = "
+                    <script>
+                            Swal.fire({
+                              icon: 'success',
+                              title: 'Data',
+                              text: 'Berhasil Pinjam'
+                            }) 
+                    </script>
+                ";
+    } else {
+        $script =
+            "
                     <script>
                                 Swal.fire({
                                   icon: 'error',
@@ -230,13 +237,13 @@ $(document).on('click', '.del_sup', function(event) {
 
                     </script>
                     ";
-            }
-        }else{
-            $script = "";
-        } 
-        echo $script;
-    ?>
-    
+    }
+} else {
+    $script = "";
+}
+echo $script;
+?>
+
 
 <!-- <script type="text/javascript">
     
@@ -271,7 +278,7 @@ $(document).on('click', '.del_sup', function(event) {
               }).then((result) => {
                 if (result.value) {
                   $.ajax({
-                    url:"<?=base_url('/buku/delete')?>",  
+                    url:"<?= base_url('/buku/delete') ?>",  
                     method:"post",
                     beforeSend :function () {
                     swal({
@@ -307,40 +314,39 @@ $(document).on('click', '.del_sup', function(event) {
 
 
 <script type="text/javascript">
-    $(".remove").click(function(){
+    $(".remove").click(function() {
         var id = $(this).parents("tr").attr("id");
-    
-       swal({
-        title: "Are you sure?",
-        text: "You will not be able to recover this imaginary file!",
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonClass: "btn-danger",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "No, cancel plx!",
-        closeOnConfirm: false,
-        closeOnCancel: false
-      },
-      function(isConfirm) {
-        if (isConfirm) {
-          $.ajax({
-             url: '/buku/delete'+id,
-             type: 'DELETE',
-             error: function() {
-                alert('Something is wrong');
-             },
-             success: function(data) {
-                  $("#"+id).remove();
-                  swal("Deleted!", "Your imaginary file has been deleted.", "success");
-             }
-          });
-        } else {
-          swal("Cancelled", "Your imaginary file is safe :)", "error");
-        }
-      });
-     
+
+        swal({
+                title: "Are you sure?",
+                text: "You will not be able to recover this imaginary file!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "No, cancel plx!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+            },
+            function(isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        url: '/buku/delete' + id,
+                        type: 'DELETE',
+                        error: function() {
+                            alert('Something is wrong');
+                        },
+                        success: function(data) {
+                            $("#" + id).remove();
+                            swal("Deleted!", "Your imaginary file has been deleted.", "success");
+                        }
+                    });
+                } else {
+                    swal("Cancelled", "Your imaginary file is safe :)", "error");
+                }
+            });
+
     });
-    
 </script>
 </body>
 

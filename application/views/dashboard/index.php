@@ -133,16 +133,23 @@
 
                     <div class="col-lg-6 mb-6">
                         <?php foreach ($mading as $m) : ?>
-                        <!-- Approach -->
-                        <div class="card shadow mb-6">
-                            <div class="card-header py-6">
-                                <h6 class="m-0 font-weight-bold text-primary"><?= $m['keterangan'];?></h6>
+                            <!-- Approach -->
+                            <div class="card shadow mb-6">
+                                <div class="card-header py-6">
+                                    <h6 class="m-0 font-weight-bold text-primary"><?= $m['keterangan']; ?></h6>
+                                </div>
+                                <div class="card-body">
+                                    <p><?= $m['isi']; ?></p>
+                                    <?php if ($user['role_id'] == 1) {
+                                        $b = '';
+                                    } elseif ($user['role_id'] == 2) {
+                                        $b = 'hidden';
+                                    } elseif ($user['role_id'] == 3) {
+                                        $b = 'hidden';
+                                    } ?>
+                                    <p><a href="<?= base_url('Dashboard/editinfo/') . $m['id']; ?>" class="btn btn-primary" <?= $b; ?>>Edit</a></p>
+                                </div>
                             </div>
-                            <div class="card-body">
-                                <p><?= $m['isi'];?></p>
-                                <p><a href="<?= base_url('Dashboard/editinfo/') . $m['id']; ?>" class="btn btn-primary">Edit</a></p>
-                            </div>
-                        </div>
                         <?php endforeach; ?>
 
                     </div>

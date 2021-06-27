@@ -11,7 +11,8 @@
                         <div class="form-row">
                             <div class="col">
                                 <b><label for="nama_peminjam">Nama Peminjam</label></b>
-                                <br> <select class="form-control itemNamepeminjam" id="nama_peminjam" name="nama_peminjam">
+                                <!-- <input type="text" class="form-control form-control-user" id="nama_peminjam" name="nama_peminjam" placeholder="Masukan Nama Peminjam"> -->
+                                <br> <select class="form-control itemNamepeminjam form-control-user" id="nama_peminjam" name="nama_peminjam">
                                 </select>
                                 <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>

@@ -48,22 +48,22 @@ class Dashboard extends CI_Controller
         );
         $this->form_validation->set_rules('isian', 'Isiann', 'trim|required');
         $id = $this->uri->segment(3);
-         if ($this->form_validation->run() == false) {
-         $this->load->view('templates/header', $data);
-         $this->load->view('templates/sidebar', $data);
-         $this->load->view('templates/topbar', $data);
-         $this->load->view('dashboard/editinfo', $data);
-         $this->load->view('templates/footer', $data);
-         } else {
-             $isi =[
-              'isi' => $this->input->post('isian')
-                 ];
+        if ($this->form_validation->run() == false) {
+            $this->load->view('templates/header', $data);
+            $this->load->view('templates/sidebar', $data);
+            $this->load->view('templates/topbar', $data);
+            $this->load->view('dashboard/editinfo', $data);
+            $this->load->view('templates/footer', $data);
+        } else {
+            $isi = [
+                'isi' => $this->input->post('isian')
+            ];
             $this->db->where('id', $id);
             $this->db->update('tb_dashboard', $isi);
             // die($isi);
             $this->session->set_flashdata('message', 'Berhasil Di Update');
             redirect('Dashboard');
-         }
+        }
     }
 
     public function lakukanedit()
