@@ -8,7 +8,7 @@
         <div class="form-row">
             <div class="col">
                 <b><label for="nama">Nama </label></b>
-                <input type="text" class="form-control" placeholder="Tulis Nama" id="nama" name="nama" value="<?= set_value('nama') ?>">
+                <input type="text" class="form-control" placeholder="Tulis Nama" id="name" name="name" value="<?= set_value('name') ?>">
                 <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
             <div class="col">
@@ -31,15 +31,6 @@
             <div class="col">
                 <b><label for="aktif">Is Active</label></b>
                 <select class="form-control" id="aktif" name="aktif">
-                    <option value="<?php if ($user['is_active'] == 1) {
-                                        echo '1';
-                                    } else {
-                                        echo '2';
-                                    } ?>"><?php if ($user['is_active'] == 1) {
-                                                echo 'Aktif';
-                                            } else {
-                                                echo 'Tidak Aktif';
-                                            } ?></option>
                     <option value="1">Aktif</option>
                     <option value="0">Tidak Aktif</option>
                 </select>
@@ -54,25 +45,26 @@
                 <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
             </div>
             <div class=" col">
-                <b><label for="password">Ulangi Password</label></b>
+                <b><label for="password2">Ulangi Password</label></b>
                 <input type="password" class="form-control form-control-user" id="password2" name="password2" placeholder="Repeat Password">
             </div>
         </div>
+        <br>
+        <div class="text-right">
+            <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Update Profile">
+                <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
+                <span class="btn-inner--text">Tambah</span>
+            </button>
+            <a href=" <?= base_url('dashboard') ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
+                <span class="btn-inner--icon"><i class="fas fa-reply"></i></span>
+                <span class="btn-inner--text">Kembali</span>
+            </a>
+        </div>
+    </form>
+
 
 </div>
 
-<br>
-<div class="text-right">
-    <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Update Profile">
-        <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
-        <span class="btn-inner--text">Tambah</span>
-    </button>
-    <a href=" <?= base_url('dashboard') ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
-        <span class="btn-inner--icon"><i class="fas fa-reply"></i></span>
-        <span class="btn-inner--text">Kembali</span>
-    </a>
-</div>
-</form>
 
 <!-- /.container-fluid -->
 

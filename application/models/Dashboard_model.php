@@ -14,4 +14,9 @@ class Dashboard_model extends CI_Model
         $detail = " SELECT * from tb_dashboard where id = $id ";
         return $this->db->query($detail)->row_array();
     }
+    public function getJmlMember()
+    {
+        $jml = "SELECT COUNT(*) as jml FROM user where role_id = 2";
+        return $this->db->query($jml)->result_array();
+    }
 }

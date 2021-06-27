@@ -16,6 +16,7 @@ class Dashboard extends CI_Controller
         $data['buku'] = $this->buku->getJmlBuku();
         $this->load->model('Dashboard_model', 'das');
         $data['mading'] = $this->das->info();
+        $data['member'] = $this->das->getJmlMember();
         $this->load->view('templates/header', $data);
         $this->load->view('templates/sidebar', $data);
         $this->load->view('templates/topbar', $data);
