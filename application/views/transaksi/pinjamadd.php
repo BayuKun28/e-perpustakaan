@@ -9,18 +9,33 @@
                     <?= $this->session->flashdata('message'); ?>
                     <form id="pinjamanadd" method="post" action="<?= base_url('transaksi/pinjamadd'); ?>">
                         <div class="form-row">
-                            <div class="col">
+                            <div class="col-md-6">
                                 <b><label for="nama_peminjam">Nama Peminjam</label></b>
                                 <!-- <input type="text" class="form-control form-control-user" id="nama_peminjam" name="nama_peminjam" placeholder="Masukan Nama Peminjam"> -->
                                 <br> <select class="form-control itemNamepeminjam form-control-user" id="nama_peminjam" name="nama_peminjam">
                                 </select>
                                 <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <div class="col">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
                                 <b><label for="nama_buku">Nama Buku</label></b><br>
                                 <select class="form-control itemNamebuku" id="nama_buku" name="nama_buku">
                                 </select>
                                 <?= form_error('nama_buku', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="col-md-6">
+                                <b><label for="jml">jml Buku</label></b><br>
+                                <select class="form-control itemJmlbuku" id="nama_buku" name="jml">
+                                </select>
+                                <?= form_error('jml', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
+                            <div class="col-md-1">
+                                <div class="number-input md-number-input">
+                                    <b><label for="jumlah"></label></b><br>
+                                    <input class="form-control" min="0" name="jumlah" value="<?= set_value('jumlah'); ?>" type="number">
+                                    <?= form_error('jumlah', '<small class="text-danger pl-3">', '</small>'); ?>
+                                </div>
                             </div>
                         </div><br>
                         <div class="form-row">

@@ -75,6 +75,12 @@
 
 
 <script type="text/javascript">
+    function jml() {
+        var buku = $("#")
+    }
+</script>
+
+<script type="text/javascript">
     $('.itemNamebuku').select2({
         ajax: {
             url: "<?= base_url(); ?>/transaksi/getdatabuku",
@@ -100,6 +106,8 @@
         }
     });
 </script>
+
+
 <script type="text/javascript">
     $('.itemNamepeminjam').select2({
         ajax: {
@@ -124,66 +132,68 @@
                 }
             }
         }
-    });
-</script>
+    }); <
+    />
 
 
-<script type="text/javascript">
-    $(document).on('click', '.del_buku', function(event) {
-        event.preventDefault();
-        let kode = $(this).attr('data-kode');
-        let delete_url = "<?= base_url(); ?>/buku/delete/" + kode;
+    <
+    script type = "text/javascript" >
+        $(document).on('click', '.del_buku', function(event) {
+            event.preventDefault();
+            let kode = $(this).attr('data-kode');
+            let delete_url = "<?= base_url(); ?>/buku/delete/" + kode;
 
 
-        Swal.fire({
-            title: 'Hapus Buku',
-            text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Hapus',
-            cancelButtonText: 'Batal'
-        }).then(async (result) => {
-            if (result.value) {
-                window.location.href = delete_url;
-            }
-        });
-    });
-</script>
+            Swal.fire({
+                title: 'Hapus Buku',
+                text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal'
+            }).then(async (result) => {
+                if (result.value) {
+                    window.location.href = delete_url;
+                }
+            });
+        }); <
+    />
 
 
-<script type="text/javascript">
-    $(document).on('click', '.del_sup', function(event) {
-        event.preventDefault();
-        let kode = $(this).attr('data-kode');
-        let delete_url = "<?= base_url(); ?>/supplier/delete/" + kode;
+    <
+    script type = "text/javascript" >
+        $(document).on('click', '.del_sup', function(event) {
+            event.preventDefault();
+            let kode = $(this).attr('data-kode');
+            let delete_url = "<?= base_url(); ?>/supplier/delete/" + kode;
 
 
-        Swal.fire({
-            title: 'Hapus Supplier',
-            text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Hapus',
-            cancelButtonText: 'Batal'
-        }).then(async (result) => {
-            if (result.value) {
-                window.location.href = delete_url;
-            }
-        });
-    });
-</script>
+            Swal.fire({
+                title: 'Hapus Supplier',
+                text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal'
+            }).then(async (result) => {
+                if (result.value) {
+                    window.location.href = delete_url;
+                }
+            });
+        }); <
+    />
 
 
-<?php
-if (!empty($this->session->flashdata('message'))) {
-    $pesan = $this->session->flashdata('message');
-    if ($pesan == "Berhasil") {
-        // die($pesan);
-        $script = "
+    <?php
+    if (!empty($this->session->flashdata('message'))) {
+        $pesan = $this->session->flashdata('message');
+        if ($pesan == "Berhasil") {
+            // die($pesan);
+            $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -192,9 +202,9 @@ if (!empty($this->session->flashdata('message'))) {
                             }) 
                     </script>
                 ";
-    } elseif ($pesan == "Berhasil Dihapus") {
-        // die($pesan);
-        $script = "
+        } elseif ($pesan == "Berhasil Dihapus") {
+            // die($pesan);
+            $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -203,9 +213,9 @@ if (!empty($this->session->flashdata('message'))) {
                             }) 
                     </script>
                 ";
-    } elseif ($pesan == "Berhasil Di Update") {
-        // die($pesan);
-        $script = "
+        } elseif ($pesan == "Berhasil Di Update") {
+            // die($pesan);
+            $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -214,9 +224,9 @@ if (!empty($this->session->flashdata('message'))) {
                             }) 
                     </script>
                 ";
-    } elseif ($pesan == "Berhasil Pinjam") {
-        // die($pesan);
-        $script = "
+        } elseif ($pesan == "Berhasil Pinjam") {
+            // die($pesan);
+            $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -225,9 +235,9 @@ if (!empty($this->session->flashdata('message'))) {
                             }) 
                     </script>
                 ";
-    } else {
-        $script =
-            "
+        } else {
+            $script =
+                "
                     <script>
                                 Swal.fire({
                                   icon: 'error',
@@ -237,28 +247,28 @@ if (!empty($this->session->flashdata('message'))) {
 
                     </script>
                     ";
+        }
+    } else {
+        $script = "";
     }
-} else {
-    $script = "";
-}
-echo $script;
-?>
+    echo $script;
+    ?>
 
 
-<!-- <script type="text/javascript">
-    
-    const flashData = $('.flash-data').data('flashdata');
+        <
+        !-- < script type = "text/javascript" >
+
+        const flashData = $('.flash-data').data('flashdata');
 
     if (flashData) {
         Swal({
 
-            title:'Data Buku',
-            text:'Berhasil' + flashData,
-            type:'success'
+            title: 'Data Buku',
+            text: 'Berhasil' + flashData,
+            type: 'success'
 
         });
     }
-
 </script> -->
 
 <!-- <script type="text/javascript">

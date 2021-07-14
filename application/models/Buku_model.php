@@ -12,6 +12,7 @@ class Buku_model extends CI_Model
         LEFT JOIN supplier s on (s.id=tb.id_supplier)
         ORDER BY tb.id";
         return $this->db->query($query)->result_array();
+        echo json_encode($query);
     }
     public function getJmlBuku()
     {

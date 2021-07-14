@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jun 26, 2021 at 04:18 PM
+-- Generation Time: Jul 14, 2021 at 06:55 PM
 -- Server version: 8.0.25
 -- PHP Version: 7.4.3
 
@@ -68,11 +68,13 @@ CREATE TABLE `tb_buku` (
 --
 
 INSERT INTO `tb_buku` (`id`, `id_supplier`, `nama_buku`, `pengarang`, `penerbit`, `tahun`, `status`, `ket`, `stok`) VALUES
-(11, 3, 'Globe Earth', 'Isnan Wahyudi', 'Gramedia', 2019, 'Kosong', 'Sumbangan', 0),
+(11, 11, 'Globe Earth', 'Isnan Wahyudi', 'Gramedia', 2019, 'Ada', 'Sumbangan', 0),
 (12, 1, 'Globe Earth or Flat Earth', 'Bayu Prastyo', 'Gramedia', 2019, 'Kosong', 'Pembelian', 0),
 (14, 1, 'Sejarah Keluarga Rotschild', 'Isnan Wahyudi', 'Gramedia', 2019, 'Kosong', 'Pembelian', 0),
 (18, 1, 'Corona Is Full Of Shit', 'Bayu Prastyo', 'Bayu Prastyo', 2020, 'Kosong', 'Pembelian', 0),
-(19, 1, 'Konspirasi Joe BIden', 'Bayu Prastyo', 'Gramedia', 2020, 'Ada', 'Pembelian', 1);
+(19, 1, 'Konspirasi Joe BIden', 'Bayu Prastyo', 'Gramedia', 2020, 'Ada', 'Pembelian', 1),
+(20, 1, 'Indonesia Darurat', 'Bayu Prastyo', 'Gramedia', 2020, 'Ada', 'Pilih Keterangan', 10),
+(21, 1, 'Buku apa aja', 'Boss Darling', 'Gramedia', 2020, 'Ada', 'Pembelian', 10);
 
 -- --------------------------------------------------------
 
@@ -122,7 +124,9 @@ INSERT INTO `tb_peminjaman` (`id`, `id_peminjam`, `id_buku`, `tanggal_pinjam`, `
 (7, 1, '12', '2020-01-24', '2020-01-05', 'Ok', 'Pinjam'),
 (8, 1, '14', '2020-01-28', '2020-01-31', 'Pinjam', 'Pinjam'),
 (9, 2, '19', '2021-01-30', '0000-00-00', 'a', 'Pinjam'),
-(10, 1, '19', '2021-07-10', '2021-07-05', 'a', 'Pinjam');
+(10, 1, '19', '2021-07-10', '2021-07-05', 'a', 'Pinjam'),
+(11, 0, '19', '2021-06-27', '2021-06-30', '<p>ahay</p>', 'Pinjam'),
+(12, 0, '19', '2021-06-30', '2021-07-08', '<p>ahay</p>', 'Pinjam');
 
 -- --------------------------------------------------------
 
@@ -169,7 +173,13 @@ INSERT INTO `user` (`id`, `name`, `email`, `image`, `password`, `role_id`, `is_a
 (1, 'Bayu Prastyo', 'bhayou.essega@gmail.com', 'default.jpg', '$2y$10$id3E1R/RCaGP6N0/i9MvSOZ2FAEZjafwabA8BBJugctYNG1wOrJIO', 1, 1, 1578716578),
 (2, 'Esti Setyaningrum', 'Esti@gmail.com', 'default.jpg', '$2y$10$XnSz0vp67nljCUNzXZAQA.z3/zDe52fYtwDHzpsBH75OLNih0HUUy', 2, 1, 1578717058),
 (3, 'Nabil', 'Nabil@gmail.com', 'default.jpg', '$2y$10$sDrqy7Og.EIiOn1u8hz8ruylRX8IlTvw.0jOGDduSU2aGjvvrrCWu', 3, 1, 1578717120),
-(4, 'madi', 'madi@gmail.com', 'default.jpg', '$2y$10$pVI4QDnM4tjr0ArtUiiJ1u9RBo6WOtIyp9UlhqeSg1XRSrLQnlLS.', 1, 1, 1585305317);
+(4, 'madi', 'madi@gmail.com', 'default.jpg', '$2y$10$pVI4QDnM4tjr0ArtUiiJ1u9RBo6WOtIyp9UlhqeSg1XRSrLQnlLS.', 1, 1, 1585305317),
+(5, 'Hex', 'Hex@gmail.com', 'default.jpg', '$2y$10$nAYJiUfVSyDGou9MigCrPusEXrYjfnHYyAUOSbJ1scH2Rb1S9APyW', 2, 1, 1624699606),
+(6, 'aku', 'aku@gmail.com', 'default.jpg', '$2y$10$QS8jEZal/z6BBwHNEe0TYuQLS.SPdt.ggfTj7WcXBX30jf7N94pja', 2, 1, 1624796244),
+(7, 'bali', 'bali@gmail.com', 'default.jpg', '$2y$10$smBsPYwcQwiGCb/QO8Q6IeiRxJS2xneyg2enFeNvuD2CJn9t2Y4Bu', 1, 1, 1624800766),
+(8, 'aing', 'aing@gmail.com', 'default.jpg', '$2y$10$XkzuPxF/H/zrgZyd5LF4B.t3TE8dRAiHovkXFVqy4vKaYSh9glXjm', 1, 1, 1624800800),
+(9, 'bayu prastyo', 'bhayou.essegaa@gmail.com', 'default.jpg', '$2y$10$FJQGr9QEsL/pb219NjJGsO9.Nv9kEb6HmxGmwvV/DZ25hLFoMbdDq', 2, 1, 1624800932),
+(10, 'yoi', 'yoi@gmail.com', 'default.jpg', '$2y$10$x8koUEipt9dTw6bNI6002uGhlFxO4yCYDag27ur2xKpCOazxdrypa', 1, 1, 1624801014);
 
 -- --------------------------------------------------------
 
@@ -196,7 +206,8 @@ INSERT INTO `user_access_menu` (`id`, `role_id`, `menu_id`) VALUES
 (6, 1, 4),
 (7, 3, 5),
 (8, 3, 2),
-(9, 1, 7);
+(9, 1, 7),
+(10, 2, 8);
 
 -- --------------------------------------------------------
 
@@ -219,7 +230,8 @@ INSERT INTO `user_menu` (`id`, `menu`) VALUES
 (3, 'Menu'),
 (4, 'Buku'),
 (6, 'Pengunjung'),
-(7, 'Transaksi');
+(7, 'Transaksi'),
+(8, 'Pinjam');
 
 -- --------------------------------------------------------
 
@@ -271,7 +283,10 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 (11, 6, 'Dashboard', 'dashboard/pengunjung', 'fas fa-fw fa-tachometer-alt', 1),
 (12, 7, 'Peminjaman', 'transaksi/peminjaman', 'fas fa-fw fa-box', 1),
 (13, 7, 'Pengembalian', 'transaksi/pengembalian', 'fas fa-fw fa-clipboard-check', 1),
-(14, 4, 'Daftar Buku', 'buku', 'fas fa-fw fa-book', 1);
+(14, 4, 'Daftar Buku', 'buku', 'fas fa-fw fa-book', 1),
+(15, 8, 'Pinjam', 'transaksi/pinjamadd', 'fas fa-fw fa-box', 1),
+(16, 2, 'Add User', 'user/add', 'fas fa-fw fa-user-plus', 1),
+(17, 2, 'Daftar Member', 'user/list', 'fas fa-fw fa-list', 1);
 
 --
 -- Indexes for dumped tables
@@ -351,7 +366,7 @@ ALTER TABLE `supplier`
 -- AUTO_INCREMENT for table `tb_buku`
 --
 ALTER TABLE `tb_buku`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `tb_dashboard`
@@ -363,7 +378,7 @@ ALTER TABLE `tb_dashboard`
 -- AUTO_INCREMENT for table `tb_peminjaman`
 --
 ALTER TABLE `tb_peminjaman`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tb_pengembalian`
@@ -375,19 +390,19 @@ ALTER TABLE `tb_pengembalian`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
 --
 ALTER TABLE `user_access_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
 --
 ALTER TABLE `user_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -399,7 +414,7 @@ ALTER TABLE `user_role`
 -- AUTO_INCREMENT for table `user_sub_menu`
 --
 ALTER TABLE `user_sub_menu`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
