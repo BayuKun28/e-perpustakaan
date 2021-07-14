@@ -132,68 +132,66 @@
                 }
             }
         }
-    }); <
-    />
+    });
+</script>
 
 
-    <
-    script type = "text/javascript" >
-        $(document).on('click', '.del_buku', function(event) {
-            event.preventDefault();
-            let kode = $(this).attr('data-kode');
-            let delete_url = "<?= base_url(); ?>/buku/delete/" + kode;
+<script type="text/javascript">
+    $(document).on('click', '.del_buku', function(event) {
+        event.preventDefault();
+        let kode = $(this).attr('data-kode');
+        let delete_url = "<?= base_url(); ?>/buku/delete/" + kode;
 
 
-            Swal.fire({
-                title: 'Hapus Buku',
-                text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus',
-                cancelButtonText: 'Batal'
-            }).then(async (result) => {
-                if (result.value) {
-                    window.location.href = delete_url;
-                }
-            });
-        }); <
-    />
+        Swal.fire({
+            title: 'Hapus Buku',
+            text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then(async (result) => {
+            if (result.value) {
+                window.location.href = delete_url;
+            }
+        });
+    });
+</script>
 
 
-    <
-    script type = "text/javascript" >
-        $(document).on('click', '.del_sup', function(event) {
-            event.preventDefault();
-            let kode = $(this).attr('data-kode');
-            let delete_url = "<?= base_url(); ?>/supplier/delete/" + kode;
+<script type="text/javascript">
+    $(document).on('click', '.del_sup', function(event) {
+        event.preventDefault();
+        let kode = $(this).attr('data-kode');
+        let delete_url = "<?= base_url(); ?>/supplier/delete/" + kode;
 
 
-            Swal.fire({
-                title: 'Hapus Supplier',
-                text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Hapus',
-                cancelButtonText: 'Batal'
-            }).then(async (result) => {
-                if (result.value) {
-                    window.location.href = delete_url;
-                }
-            });
-        }); <
-    />
+        Swal.fire({
+            title: 'Hapus Supplier',
+            text: "Apakah Anda Yakin Ingin Menghapus Data Ini?",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Hapus',
+            cancelButtonText: 'Batal'
+        }).then(async (result) => {
+            if (result.value) {
+                window.location.href = delete_url;
+            }
+        });
+    });
+</script>
 
 
-    <?php
-    if (!empty($this->session->flashdata('message'))) {
-        $pesan = $this->session->flashdata('message');
-        if ($pesan == "Berhasil") {
-            // die($pesan);
-            $script = "
+<?php
+if (!empty($this->session->flashdata('message'))) {
+    $pesan = $this->session->flashdata('message');
+    if ($pesan == "Berhasil") {
+        // die($pesan);
+        $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -202,9 +200,9 @@
                             }) 
                     </script>
                 ";
-        } elseif ($pesan == "Berhasil Dihapus") {
-            // die($pesan);
-            $script = "
+    } elseif ($pesan == "Berhasil Dihapus") {
+        // die($pesan);
+        $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -213,9 +211,9 @@
                             }) 
                     </script>
                 ";
-        } elseif ($pesan == "Berhasil Di Update") {
-            // die($pesan);
-            $script = "
+    } elseif ($pesan == "Berhasil Di Update") {
+        // die($pesan);
+        $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -224,9 +222,9 @@
                             }) 
                     </script>
                 ";
-        } elseif ($pesan == "Berhasil Pinjam") {
-            // die($pesan);
-            $script = "
+    } elseif ($pesan == "Berhasil Pinjam") {
+        // die($pesan);
+        $script = "
                     <script>
                             Swal.fire({
                               icon: 'success',
@@ -235,9 +233,9 @@
                             }) 
                     </script>
                 ";
-        } else {
-            $script =
-                "
+    } else {
+        $script =
+            "
                     <script>
                                 Swal.fire({
                                   icon: 'error',
@@ -247,83 +245,16 @@
 
                     </script>
                     ";
-        }
-    } else {
-        $script = "";
     }
-    echo $script;
-    ?>
-
-
-        <
-        !-- < script type = "text/javascript" >
-
-        const flashData = $('.flash-data').data('flashdata');
-
-    if (flashData) {
-        Swal({
-
-            title: 'Data Buku',
-            text: 'Berhasil' + flashData,
-            type: 'success'
-
-        });
-    }
-</script> -->
-
-<!-- <script type="text/javascript">
-          $('#databuku').on('click','.hapus-buku', function (e) {
-            e.preventDefault();
-            var id =  $(this).data('id');
-            swal({
-                title: 'Konfirmasi',
-                text: "Anda ingin menghapus ",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Hapus',
-                confirmButtonColor: '#d33',
-                cancelButtonColor: '#3085d6',
-                cancelButtonText: 'Tidak',
-                reverseButtons: true
-              }).then((result) => {
-                if (result.value) {
-                  $.ajax({
-                    url:"<?= base_url('/buku/delete') ?>",  
-                    method:"post",
-                    beforeSend :function () {
-                    swal({
-                        title: 'Menunggu',
-                        html: 'Memproses data',
-                        onOpen: () => {
-                          swal.showLoading()
-                        }
-                      })      
-                    },    
-                    data:{id:id},
-                    success:function(data){
-                      swal(
-                        'Hapus',
-                        'Berhasil Terhapus',
-                        'success'
-                      )
-                      databuku.ajax.reload(null, false)
-                    }
-                  })
-              } else if (result.dismiss === swal.DismissReason.cancel) {
-                  swal(
-                    'Batal',
-                    'Anda membatalkan penghapusan',
-                    'error'
-                  )
-                }
-              })
-            });
-    
-</script> -->
+} else {
+    $script = "";
+}
+echo $script;
+?>
 
 
 
-<script type="text/javascript">
+<script script type="text/javascript">
     $(".remove").click(function() {
         var id = $(this).parents("tr").attr("id");
 
