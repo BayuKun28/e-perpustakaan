@@ -40,6 +40,8 @@
 
 <!-- Bootstrap core JavaScript-->
 <script src="<?= base_url('assets/') ?>vendor/jquery/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <!-- <script src="htpps://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
  -->
 <script src="<?= base_url('assets/') ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -105,8 +107,55 @@
             }
         }
     });
+
+    $('#nama_buku').change(function(){
+        var idbuku = $('#nama_buku').val();
+        $.ajax({
+            url: "<?= base_url(); ?>/transaksi/getdatabukuparam",
+            data:"kodee="+idbuku ,
+        }).success(function (data){
+            var json = data,
+            obj = JSON.parse(json);
+            $('#stoke').val(obj.stok);
+
+            if (obj.stok == "0" ) {
+            alert("Data yang anda pilih raono");    
+            }else{
+            alert("Data yang anda pilih "+data);
+            };
+        });
+    })
+    
 </script>
 
+<!-- <script type="text/javascript">
+    function tampilstok(){
+    $('.stok').select2({
+        ajax: {
+            url: "<?= base_url(); ?>/transaksi/getdatabuku",
+            dataType: "json",
+            delay: 250,
+            data: function(params) {
+                return {
+                    buk: params.term
+                };
+            },
+            processResults: function(data) {
+                var results = [];
+                $.each(data, function(index, item) {
+                    results.push({
+                        id: item.id,
+                        text: item.nama_buku
+                    });
+                });
+                return {
+                    results: results
+                }
+            }
+        }
+    });
+</script>
+ -->
 
 <script type="text/javascript">
     $('.itemNamepeminjam').select2({

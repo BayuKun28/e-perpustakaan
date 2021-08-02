@@ -55,6 +55,14 @@ class Transaksi extends CI_Controller
         $query = $this->pinjam->getbukuselect2($buk, 'nama_buku');
         echo json_encode($query);
     }
+
+    public function getdatabukuparam()
+    {
+        $buk = $this->input->get('kodee');
+        $this->load->model('Peminjaman_model', 'pinjam');
+        $data = $this->pinjam->getbukuauto($buk, 'stok');
+        echo json_encode($data);
+    }
     public function getdatapeminjam()
     {
         $peminjam = $this->input->get('peminjam');

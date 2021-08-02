@@ -30,6 +30,15 @@ class Peminjaman_model extends CI_Model
         $this->db->like('status', 'ada');
         return $this->db->get()->result_array();
     }
+
+    public function getbukuauto($kodee)
+    {
+        $this->db->select('stok');
+        $this->db->from('tb_buku');
+        $this->db->where('id', $kodee);
+        return $this->db->get()->result_array();
+    }
+
     public function getpeminjamselect2($peminjam)
     {
         $this->db->select('*');

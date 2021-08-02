@@ -24,22 +24,22 @@
                                 </select>
                                 <?= form_error('nama_buku', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <div class="col-md-6">
-                                <b><label for="jml">jml Buku</label></b><br>
-                                <select class="form-control itemJmlbuku" id="nama_buku" name="jml">
-                                </select>
-                                <?= form_error('jml', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <div class="col-md-2">
+                                <b><label for="stokk">Stok</label></b><br>
+                                    <input class="form-control" stoke name="stokk" id="stokk" type="text">
+                                    <?= form_error('stokk', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                            <div class="col-md-1">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-2">
                                 <div class="number-input md-number-input">
-                                    <b><label for="jumlah"></label></b><br>
+                                    <b><label for="jumlah">Jumlah Pinjam</label></b><br>
                                     <input class="form-control" min="0" name="jumlah" value="<?= set_value('jumlah'); ?>" type="number">
                                     <?= form_error('jumlah', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>
-                        </div><br>
+                        </div>
                         <div class="form-row">
-
                             <div class="col">
                                 <b><label for="tanggal_pinjam">Tanggal Pinjam</label></b>
                                 <input type="date" name="tanggal_pinjam" class="form-control tanggal" />
