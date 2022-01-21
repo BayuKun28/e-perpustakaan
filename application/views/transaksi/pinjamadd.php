@@ -8,15 +8,7 @@
                 <div class="card-body ">
                     <?= $this->session->flashdata('message'); ?>
                     <form id="pinjamanadd" method="post" action="<?= base_url('transaksi/pinjamadd'); ?>">
-                        <div class="form-row">
-                            <div class="col-md-6">
-                                <b><label for="nama_peminjam">Nama Peminjam</label></b>
-                                <!-- <input type="text" class="form-control form-control-user" id="nama_peminjam" name="nama_peminjam" placeholder="Masukan Nama Peminjam"> -->
-                                <br> <select class="form-control itemNamepeminjam form-control-user" id="nama_peminjam" name="nama_peminjam">
-                                </select>
-                                <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
-                            </div>
-                        </div>
+                        <?= $namas; ?>
                         <div class="form-row">
                             <div class="col-md-6">
                                 <b><label for="nama_buku">Nama Buku</label></b><br>
@@ -26,7 +18,7 @@
                             </div>
                             <div class="col-md-2">
                                 <b><label for="stokk">Stok</label></b><br>
-                                    <input class="form-control" stoke name="stokk" id="stokk" type="text">
+                                    <input class="form-control" stoke name="stoke" id="stoke" type="text">
                                     <?= form_error('stokk', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
                         </div>

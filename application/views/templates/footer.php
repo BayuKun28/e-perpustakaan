@@ -117,12 +117,12 @@
             var json = data,
             obj = JSON.parse(json);
             $('#stoke').val(obj.stok);
-
             if (obj.stok == "0" ) {
             alert("Data yang anda pilih raono");    
             }else{
             alert("Data yang anda pilih "+data);
             };
+
         });
     })
     

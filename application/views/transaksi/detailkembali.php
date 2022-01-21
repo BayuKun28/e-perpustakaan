@@ -63,7 +63,7 @@
                 </a>
                 <button type="submit" class="btn btn-sm btn-success btn-round btn-icon" data-toggle="tooltip" data-original-title="Tambah Data">
                     <span class="btn-inner--icon"><i class="fas fa-check"></i></span>
-                    <span class="btn-inner--text">Simpan</span>
+                    <span class="btn-inner--text">Kembalikan</span>
                 </button>
             </div>
 
