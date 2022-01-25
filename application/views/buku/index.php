@@ -51,7 +51,8 @@
                         <td><?= $i; ?></td>
                         <td>
                           <?php
-                            $kode = base_url() ."/buku/edit/".$b['id'];
+                            // $kode = base_url() ."/buku/edit/".$b['id'];
+                            $kode = $b['id'];
                             require_once('assets/qrcode/qrlib.php');
                             QRcode::png($kode,"files/qrcode/kode".$i.".png","M",2,2);
                           ?>

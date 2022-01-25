@@ -22,13 +22,10 @@ class Transaksi extends CI_Controller
         $userr = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         // $data['role'] = $this->db->get_where('user', ['role_id' => $this->session->userdata('role_id')])->row_array();
         $this->load->model('Peminjaman_model', 'pinjam');
+        $this->load->model('Buku_model', 'bukumodel');
         $data['peminjam'] = $this->pinjam->getpeminjam();
         $data['buku'] = $this->db->get('tb_buku')->result_array();
-        $jmlstok = $this->db->get('tb_buku')->result_array();
         $role = $this->db->get_where('user', ['role_id' => $this->session->userdata('role_id')])->row_array();
-
-        $qty= $this->input->post('jumlah');
-
         if ($role == 1){
             $namas = "<div class='form-row'>
                             <div class='col-md-6'>
@@ -63,8 +60,11 @@ class Transaksi extends CI_Controller
             $this->load->view('transaksi/pinjamadd', $data);
             $this->load->view('templates/footer', $data);
         } else {
-
-            if ($qty > $jmlstok['stok']) {
+            $idb = $this->input->post('nama_buku');
+            $jmlstok = $this->bukumodel->getstok($idb, 'stok'); 
+            $jmlstok2 = $jmlstok->row_array();
+            $qty= $this->input->post('jumlah');
+            if ($qty > $jmlstok2) {
                 echo "limit";
             }else{
             $ins = [
@@ -100,6 +100,14 @@ class Transaksi extends CI_Controller
             $xstok = $cari->row_array();
             echo $xstok['stok'];
         }
+    }
+    public function getbukuqr()
+    {
+        // $buk = $_GET['idbuku'];
+        $buk = $this->input->post('idbuku');
+        $this->load->model('Peminjaman_model', 'pinjam');
+        $cari = $this->pinjam->getbukuauto($buk)->result();
+        echo json_encode($cari);
     }
     public function getdatapeminjam()
     {

@@ -19,6 +19,11 @@ class Buku_model extends CI_Model
         $jml = "SELECT COUNT(id) as jml FROM tb_buku";
         return $this->db->query($jml)->result_array();
     }
+    public function getstok($id)
+    {
+        $this->db->where("id", $id);
+        return $this->db->get("tb_buku");
+    }
     public function getdetail($id)
     {
         $detail = " SELECT tb.id_supplier,tb.id ,tb.nama_buku ,
