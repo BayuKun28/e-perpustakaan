@@ -18,6 +18,7 @@
          <thead>
             <tr>
                <td align="center">No</td>
+               <td align="center">QRCODE</td>
                <td align="center">Nama Buku</td>
                <td align="center">Pengarang</td>
                <td align="center">Penerbit</td>
@@ -32,6 +33,16 @@
                     <?php foreach ($buku as $b) : ?>
                       <tr>
                         <td align="center"><?= $i; ?></td>
+                        <td>
+                          
+                           <?php
+                            $kode = "localhost/e-perpustakaan/buku/edit/".$b['id'];
+                            require_once('assets/qrcode/qrlib.php');
+                            QRcode::png($kode,"files/qrcode/kode".$i.".png","M",2,2);
+                          ?>
+                          <img src="<?= base_url(); ?>files/qrcode/kode<?= $i ?>.png" alt="">
+
+                        </td>
                         <td ><?= $b['nama_buku']; ?></td>
                         <td ><?= $b['pengarang']; ?></td>
                         <td ><?= $b['penerbit']; ?></td>

@@ -2,6 +2,10 @@
 // defined('BASEPATH') or exit('No direct script access allowed');
 require_once 'vendor/autoload.php';
 
+use Spipu\html2pdf\Html2Pdf; 
+use Spipu\Html2Pdf\Exception\Html2PdfException; 
+use Spipu\Html2Pdf\Exception\ExceptionFormatter;
+
 use Dompdf\Dompdf as Dompdf;
 
 class Buku extends CI_Controller
@@ -76,6 +80,27 @@ class Buku extends CI_Controller
         $this->load->view('buku/detail', $data);
         $this->load->view('templates/footer', $data);
     }
+
+    public function autofillqr(){
+
+    if (isset($_GET['term'])){
+        $this->load->model('Buku_model', 'buku');
+        $result = $this->buku->getdetail($_GET['term']);
+        if (count($result) > 0 ){
+            foreach ($result as $row) {
+                $arr_result = [
+                    'nama_buku' => $row->nama_buku,
+                    'pengarang' =>$row->pengarang,
+                    'penerbit' => $row->penerbit
+                ];
+            echo json_encode($arr_result);
+            }
+        }
+
+    }    
+
+    }
+
     public function delete($id)
     {
         $this->db->where('id', $id);
@@ -126,6 +151,19 @@ class Buku extends CI_Controller
             redirect('buku');
         }
     }
+
+
+    public function scanqr()
+    {
+        $data['title'] = 'Scan QR';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('templates/topbar', $data);
+        $this->load->view('buku/scanqr', $data);
+        $this->load->view('templates/footer', $data);
+    }
+    
     public function export()
     {
 
@@ -133,24 +171,15 @@ class Buku extends CI_Controller
         $data['title'] = 'Laporan Daftar Buku';
         $data['buku'] = $this->buku->getBuku();
         $dompdf = new Dompdf();
-        // $this->data['perusahaan'] = $this->m_usaha->lihat()
         $this->data['title'] = 'Laporan Data Buku';
         $this->data['no'] = 1;
 
         $dompdf->setPaper('A4', 'Portrait');
-        // $this->load->view('buku/detail', $data);
         $html = $this->load->view('buku/report', $data, true);
         $dompdf->load_html($html);
         $dompdf->render();
         $dompdf->stream('Laporan Data Penjualan Tanggal ' . date('d F Y'), array("Attachment" => false));
     }
-
-    // public function export(){
-    //     $this->load->model('Buku_model', 'buku');
-    //     $data['title'] = 'Laporan Daftar Buku';
-    //     $data['buku'] = $this->buku->getBuku();
-    //     $this->load->view('buku/report', $data);  
-
-    // }
+    
 
 }

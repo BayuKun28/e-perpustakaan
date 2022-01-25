@@ -24,7 +24,10 @@ class Transaksi extends CI_Controller
         $this->load->model('Peminjaman_model', 'pinjam');
         $data['peminjam'] = $this->pinjam->getpeminjam();
         $data['buku'] = $this->db->get('tb_buku')->result_array();
+        $jmlstok = $this->db->get('tb_buku')->result_array();
         $role = $this->db->get_where('user', ['role_id' => $this->session->userdata('role_id')])->row_array();
+
+        $qty= $this->input->post('jumlah');
 
         if ($role == 1){
             $namas = "<div class='form-row'>
@@ -36,7 +39,15 @@ class Transaksi extends CI_Controller
                             </div>
                         </div>";
         }else{
-            $namas = "<input type='text' class='form-control' placeholder='Judul Buku' id='judul_buku' name='judul_buku' value='".$userr['name']."'>";
+            // $namas = "<input type='text' class='form-control' placeholder='Nama Peminjam' id='nama_peminjam' name='nama_peminjam' value='".$userr['name']."'>";
+            $namas = "<div class='form-row'>
+                            <div class='col-md-6'>
+                                <b><label for='nama_peminjam'>Nama Peminjam</label></b>
+                                <br> <select class='form-control itemNamepeminjam form-control-user' id='nama_peminjam' name='nama_peminjam'>
+                                </select>
+                                <?= form_error('nama_peminjam', '<small class='text-danger pl-3'>', '</small>'); ?>
+                            </div>
+                        </div>";
             
         }
         $data['namas'] = $namas;
@@ -45,7 +56,6 @@ class Transaksi extends CI_Controller
         $this->form_validation->set_rules('nama_buku', 'Nama Buku', 'trim|required');
         $this->form_validation->set_rules('tanggal_pinjam', 'Tanggal Pinjam', 'trim|required');
         $this->form_validation->set_rules('tanggal_harus_kembali', 'Tanggal Harus Kembali', 'trim|required');
-        $this->form_validation->set_rules('nama_peminjam', 'Nama Peminjam', 'trim|required');
         if ($this->form_validation->run() == false) {
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar', $data);
@@ -53,6 +63,10 @@ class Transaksi extends CI_Controller
             $this->load->view('transaksi/pinjamadd', $data);
             $this->load->view('templates/footer', $data);
         } else {
+
+            if ($qty > $jmlstok['stok']) {
+                echo "limit";
+            }else{
             $ins = [
                 'id_peminjam' => $this->input->post('nama_peminjam'),
                 'id_buku' => $this->input->post('nama_buku'),
@@ -61,11 +75,13 @@ class Transaksi extends CI_Controller
                 'catatan' => $this->input->post('catatan'),
                 'status' => 'Pinjam'
             ];
-            //die($ins);
+            // die($ins);
             $this->db->insert('tb_peminjaman', $ins);
             $this->session->set_flashdata('message', 'Berhasil Pinjam');
             redirect('transaksi/peminjaman');
-        }
+            }
+        } 
+
     }
     public function getdatabuku()
     {
@@ -77,10 +93,13 @@ class Transaksi extends CI_Controller
 
     public function getdatabukuparam()
     {
-        $buk = $this->input->get('kodee');
+        $buk = $this->input->post('kodee');
         $this->load->model('Peminjaman_model', 'pinjam');
-        $data = $this->pinjam->getbukuauto($buk, 'stok');
-        echo json_encode($data);
+        $cari = $this->pinjam->getbukuauto($buk, 'stok');
+        if($cari->num_rows() > 0) {
+            $xstok = $cari->row_array();
+            echo $xstok['stok'];
+        }
     }
     public function getdatapeminjam()
     {

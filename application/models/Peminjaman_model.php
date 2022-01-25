@@ -33,10 +33,8 @@ class Peminjaman_model extends CI_Model
 
     public function getbukuauto($kodee)
     {
-        $this->db->select('stok');
-        $this->db->from('tb_buku');
-        $this->db->where('id', $kodee);
-        return $this->db->get()->result_array();
+        $this->db->where("id", $kodee);
+        return $this->db->get("tb_buku");
     }
 
     public function getpeminjamselect2($peminjam)

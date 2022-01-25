@@ -26,6 +26,9 @@
     <script src="<?= base_url('assets/'); ?>tinymce/js/tinymce/plugins/paste/plugin.min.js"></script>
     <script src="<?= base_url('assets/'); ?>tinymce/js/tinymce/plugins/spellchecker/plugin.min.js"></script>
 
+    <script type="text/javascript" src="<?= base_url('assets/'); ?>scanqr/instascan.min.js"></script>
+    <script type="text/javascript" src="<?= base_url('assets/'); ?>scanqr/adapter.min.js"></script>
+    <script type="text/javascript" src="<?= base_url('assets/'); ?>scanqr/vue.min.js"></script>
   
 </head>
 

@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'e57ca70327f1418145c400f5b9df07d2e862ad72',
+        'reference' => '5e5e65a8095945400afce1bd34ea570adf36977d',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'e57ca70327f1418145c400f5b9df07d2e862ad72',
+            'reference' => '5e5e65a8095945400afce1bd34ea570adf36977d',
             'dev_requirement' => false,
         ),
         'bacon/bacon-qr-code' => array(
@@ -101,12 +101,12 @@
             'dev_requirement' => false,
         ),
         'spipu/html2pdf' => array(
-            'pretty_version' => 'v5.2.2',
-            'version' => '5.2.2.0',
+            'pretty_version' => 'v5.2.4',
+            'version' => '5.2.4.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../spipu/html2pdf',
             'aliases' => array(),
-            'reference' => 'e6d8ca22347b6691bb8c2652212b1be2c89b3eff',
+            'reference' => 'dcb5671cac3d60ff486cf16df389e3bd0dc16ba4',
             'dev_requirement' => false,
         ),
         'tecnickcom/tcpdf' => array(

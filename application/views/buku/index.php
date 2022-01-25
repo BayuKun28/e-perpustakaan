@@ -7,7 +7,11 @@
             <div class="card-header py-3 col">
               <div class="row">
                 <h6 class="m-0 font-weight-bold text-primary col-sm-12 col-md-8 ">Daftar Buku Di Perpustakaan</h6>
-                <div class=" col-sm-12 col-md-4 text-right">
+                <div class=" col-sm-6 col-md-4 text-right">
+                  <a class="btn btn-sm btn-warning btn-round btn-icon" data-toggle="modal" data-target="#qrscanmodal">
+                    <span class="btn-inner--icon"><i class="fas fa-danger"></i></span>
+                    <span class="btn-inner--text"><font color="white"> Scan QR </font> </span>
+                  </a>
                   <a href="<?= base_url('buku/export'); ?>" class="btn btn-sm btn-danger btn-round btn-icon" data-toggle="tooltip" target="blamk" data-original-title="Tambah Data">
                     <span class="btn-inner--icon"><i class="fas fa-file-pdf"></i></span>
                     <span class="btn-inner--text">Cetak</span>
@@ -16,10 +20,6 @@
                     <span class="btn-inner--icon"><i class="fas fa-user-edit"></i></span>
                     <span class="btn-inner--text">Tambah</span>
                   </a>
-                  <button class="btn btn-sm btn-round btn-icon btn-info" data-toggle="tooltip" data-original-title="Segarkan Data">
-                    <span class=" btn-inner--icon"><i class="fas fa-reply"></i></span>
-                    <span class="btn-inner--text">Refresh</span>
-                  </button>
                 </div>
               </div>
             </div>
@@ -37,7 +37,6 @@
                       <th>Pengarang</th>
                       <th>Penerbit</th>
                       <th>Tahun</th>
-                      <th>Supplier</th>
                       <th>Keterangan</th>
                       <th>Status</th>
                       <th>Stok</th>
@@ -52,7 +51,7 @@
                         <td><?= $i; ?></td>
                         <td>
                           <?php
-                            $kode = "localhost/e-perpustakaan/buku/edit/".$b['id'];
+                            $kode = base_url() ."/buku/edit/".$b['id'];
                             require_once('assets/qrcode/qrlib.php');
                             QRcode::png($kode,"files/qrcode/kode".$i.".png","M",2,2);
                           ?>
@@ -62,7 +61,6 @@
                         <td><?= $b['pengarang']; ?></td>
                         <td><?= $b['penerbit']; ?></td>
                         <td><?= $b['tahun']; ?></td>
-                        <td><?= $b['nama_supplier']; ?></td>
                         <td><?= $b['ket']; ?></td>
                         <td><?= $b['status']; ?></td>
                         <td><?= $b['stok']; ?></td>
@@ -84,3 +82,58 @@
 
         </div>
         <!-- End of Main Content -->
+<div class="modal fade" id="qrscanmodal" tabindex="-1" role="dialog" aria-labelledby="qrscanmodalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="qrscanmodalLabel">SCAN QR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      
+                            <form>
+                                <div class="form-row">
+                                    <div class="col">
+                                    <video id="preview" width="100%" class="rounded"></video>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                        <b><label for="text">Result</label></b>
+                                        <input type="text" class="form-control " placeholder="" id="text" name="text" readonly="true">
+                                </div>
+                            </form>
+                        </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary"  id="oncam" >Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closecam" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+    let scanner = new Instascan.Scanner({
+     video: document.getElementById('preview')
+    });
+
+    scanner.addListener('scan',function(content){
+        // alert(content);
+        window.open(document.getElementById('text').value=content);
+        scanner.stop();
+    });
+
+    Instascan.Camera.getCameras().then(function(cameras){
+    if(cameras.length > 0){
+        scanner.start(cameras[0]);
+    } else {
+        alert('No Cameras Found');
+    }
+    
+    }).catch(function(e){
+       console.error(e);
+    });
+</script>

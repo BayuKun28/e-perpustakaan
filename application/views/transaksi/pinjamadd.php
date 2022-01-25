@@ -8,25 +8,31 @@
                 <div class="card-body ">
                     <?= $this->session->flashdata('message'); ?>
                     <form id="pinjamanadd" method="post" action="<?= base_url('transaksi/pinjamadd'); ?>">
-                        <?= $namas; ?>
+                        <!-- <?= $namas; ?> -->
                         <div class="form-row">
+                            <div class="col-md-6">
+                                <b><label for="nama_peminjam">Nama Peminjam</label></b>
+                                <br> <select class="form-control itemNamepeminjam" id="nama_peminjam" name="nama_peminjam">
+                                </select>
+                                <?= form_error('nama_peminjam', '<small class="text-danger pl-3">', '</small>'); ?>
+                            </div>
                             <div class="col-md-6">
                                 <b><label for="nama_buku">Nama Buku</label></b><br>
                                 <select class="form-control itemNamebuku" id="nama_buku" name="nama_buku">
                                 </select>
                                 <?= form_error('nama_buku', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
+                        </div>
+                        <div class="form-row">
                             <div class="col-md-2">
                                 <b><label for="stokk">Stok</label></b><br>
                                     <input class="form-control" stoke name="stoke" id="stoke" type="text">
                                     <?= form_error('stokk', '<small class="text-danger pl-3">', '</small>'); ?>
                             </div>
-                        </div>
-                        <div class="form-row">
                             <div class="col-md-2">
                                 <div class="number-input md-number-input">
                                     <b><label for="jumlah">Jumlah Pinjam</label></b><br>
-                                    <input class="form-control" min="0" name="jumlah" value="<?= set_value('jumlah'); ?>" type="number">
+                                    <input class="form-control" min="0" max= "" name="jumlah" id="jumlah" value="<?= set_value('jumlah'); ?>" type="number">
                                     <?= form_error('jumlah', '<small class="text-danger pl-3">', '</small>'); ?>
                                 </div>
                             </div>

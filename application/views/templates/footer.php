@@ -108,26 +108,46 @@
         }
     });
 
-    $('#nama_buku').change(function(){
-        var idbuku = $('#nama_buku').val();
+    $("#nama_buku").change(function(){    
+        var idbuku = $("#nama_buku").val();
+        
         $.ajax({
-            url: "<?= base_url(); ?>/transaksi/getdatabukuparam",
-            data:"kodee="+idbuku ,
-        }).success(function (data){
-            var json = data,
-            obj = JSON.parse(json);
-            $('#stoke').val(obj.stok);
-            if (obj.stok == "0" ) {
-            alert("Data yang anda pilih raono");    
-            }else{
-            alert("Data yang anda pilih "+data);
-            };
+            url:"<?php echo site_url('transaksi/getdatabukuparam');?>",
+            type:"POST",
+            data:"kodee="+idbuku,
+            cache:false,
+            success:function(html){
+                $("#stoke").val(html);
+            }
+        })
+        
+    });
 
-        });
-    })
-    
+
+
 </script>
 
+
+<!-- <script type="text/javascript">
+    
+$("jumlah").change(function){
+
+      var stok = $("#stoke").val();
+        
+        $.ajax({
+            success:function(html){
+                if (#jumlah > #stoke) {
+                    alert('melebihi');
+                } else {
+
+                }
+            }
+        })  
+    };
+
+
+</script>
+ -->
 <!-- <script type="text/javascript">
     function tampilstok(){
     $('.stok').select2({
@@ -338,6 +358,7 @@ echo $script;
 
     });
 </script>
+
 </body>
 
 </html>
